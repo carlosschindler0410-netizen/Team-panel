@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>ASツFeldw Team Panel</title>
+    <style>
+        body { background: #121212; color: #e0e0e0; font-family: sans-serif; margin: 20px; }
+        h1 { color: #00e676; text-align: center; }
+        .nav { text-align: right; margin-bottom: 20px; }
+        .nav a { color: #ff5252; text-decoration: none; font-weight: bold; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .bot-card { background: #1e1e1e; border-left: 5px solid #555; padding: 20px; border-radius: 8px; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.8em; font-weight: bold; }
+        .online { background: #1b5e20; color: #b9f6ca; }
+        .offline { background: #b71c1c; color: #ff8a80; }
+    </style>
+</head>
+<body>
+    <div class="nav">Eingeloggt als <%= user %> | <a href="/logout">Abmelden</a></div>
+    <h1>ASツFeldw Team Panel</h1>
+    <div class="grid">
+        <% bots.forEach(bot => { %>
+            <div class="bot-card">
+                <h3><%= bot.name %></h3>
+                <p><strong>Besitzer:</strong> <%= bot.owner %></p>
+                <p><strong>Rang:</strong> Rang <%= bot.rank %> - <%= bot.rankTitle %></p>
+                <p><strong>Status:</strong> <span class="badge <%= bot.status === 'online' ? 'online' : 'offline' %>"><%= bot.status.toUpperCase() %></span></p>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

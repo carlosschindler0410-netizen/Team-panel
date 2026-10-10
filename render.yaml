@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: bot-team-panel
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
